@@ -1,5 +1,5 @@
 <!-- subtitle: Contacto -->
-# Contacto
+# Contactados
 
 [Instagram](https://instagram.com/tcck.uy/)
 
