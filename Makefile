@@ -38,13 +38,12 @@ sync: site
 	@rsync -vax --delete-before ./_site/ $(SITE)/docs/
 
 GITHUB_TOKEN ?= 'NOGHTOKEN'
-GITHUB_ACTOR ?= x-access-token
 
 .PHONY: publish-repo
 publish-repo:
 	@rm -vrf $(SITE)
 	git clone --single-branch --branch master --depth 1 \
-		https://$(GITHUB_ACTOR):$(GITHUB_TOKEN)@github.com/tcck/tcck.github.io.git $(SITE)
+		https://x-access-token:$(GITHUB_TOKEN)@github.com/tcck/tcck.github.io.git $(SITE)
 
 .PHONY: publish
 publish:
