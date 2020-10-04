@@ -54,6 +54,7 @@ def main():
 	# build site
 	try:
 		build(params.copy())
+		build(params.copy(), lang = 'en')
 	except Exception as err:
 		mk.log("{}", err)
 		return 2
