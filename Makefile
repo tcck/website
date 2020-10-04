@@ -47,4 +47,4 @@ publish-repo:
 
 .PHONY: publish
 publish:
-	./publi.sh /tmp/tcck-publish-repo
+	INPUT_GITHUB_TOKEN=$(INPUT_GITHUB_TOKEN) ./publi.sh /tmp/tcck-publish-repo
