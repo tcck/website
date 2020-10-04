@@ -22,10 +22,16 @@ def build(params, lang = ''):
 	# build dir
 	src = 'content'
 	dst = '_site'
+	params['lang_url'] = '/en/'
+	params['lang_change'] = 'en'
+	params['lang_info'] = 'English'
 	if lang != '':
 		src = 'content/%s' % lang
 		dst = '_site/%s' % lang
 		params['base_path'] = '/%s' % lang
+		params['lang_url'] = '/'
+		params['lang_change'] = 'es'
+		params['lang_info'] = 'Español'
 	# load layouts
 	page_layout = mk.fread('layout/page.html')
 	# site pages
