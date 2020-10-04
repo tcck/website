@@ -46,7 +46,7 @@ coverage: .venv
 
 .PHONY: vendor
 vendor:
-	./vendor.sh
+	@./vendor.sh
 
 clean:
 	@find . -type d -name '__pycache__' -exec rm -vrf {} \;
