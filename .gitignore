@@ -2,3 +2,4 @@
 /venv.sh
 /_site
 /_vendor
+__pycache__

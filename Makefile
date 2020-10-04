@@ -17,7 +17,7 @@ venv.sh:
 
 .PHONY: site
 site: .venv
-	. ./venv.sh && ./vendor/makesite/makesite.py
+	. ./venv.sh && ./build.py
 
 .PHONY: serve
 serve: site
