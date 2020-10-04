@@ -33,7 +33,10 @@ def build(params, lang = ''):
 		params['lang_change'] = 'es'
 		params['lang_info'] = 'Español'
 	# load layouts
+	menu_content = mk.fread('%s/_menu.html' % src)
 	page_layout = mk.fread('layout/page.html')
+	# combine layouts
+	page_layout = mk.render(page_layout, menu_content = menu_content)
 	# site pages
 	mk.make_pages('%s/_index.md' % src, '%s/index.html' % dst,
 		page_layout, **params)
