@@ -25,8 +25,11 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: publish
+      - name: build
+        shell: bash
+        env:
+          SITE: /tmp/tcck-publish-repo
         run: |
           make publish-repo
-          make sync SITE=/tmp/tcck-publish-repo
+          make sync
           make publish

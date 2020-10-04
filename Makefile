@@ -37,14 +37,15 @@ sync: site
 	@test -e ./_site/.nojekyll || touch ./_site/.nojekyll
 	@rsync -vax --delete-before ./_site/ $(SITE)/docs/
 
-INPUT_GITHUB_TOKEN ?= 'NOGHTOKEN'
+GITHUB_TOKEN ?= 'NOGHTOKEN'
+GITHUB_ACTOR ?= x-access-token
 
 .PHONY: publish-repo
 publish-repo:
-	@rm -vrf /tmp/tcck-publish-repo
+	@rm -vrf $(SITE)
 	git clone --single-branch --branch master --depth 1 \
-		https://x-access-token:$(INPUT_GITHUB_TOKEN)@github.com/tcck/tcck.github.io.git /tmp/tcck-publish-repo
+		https://$(GITHUB_ACTOR):$(GITHUB_TOKEN)@github.com/tcck/tcck.github.io.git $(SITE)
 
 .PHONY: publish
 publish:
-	INPUT_GITHUB_TOKEN=$(INPUT_GITHUB_TOKEN) ./publi.sh /tmp/tcck-publish-repo
+	./publi.sh $(SITE)
