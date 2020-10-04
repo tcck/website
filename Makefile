@@ -44,9 +44,6 @@ publish-repo:
 	@rm -vrf /tmp/tcck-publish-repo
 	git clone --single-branch --branch master --depth 1 \
 		https://x-access-token:$(INPUT_GITHUB_TOKEN)@github.com/tcck/tcck.github.io.git /tmp/tcck-publish-repo
-	cd /tmp/tcck-publish-repo \
-		&& git config user.name "publish-bot" \
-		&& git config user.email "jrmsgit@users.noreply.github.com"
 
 .PHONY: publish
 publish:
