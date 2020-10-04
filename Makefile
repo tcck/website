@@ -7,7 +7,6 @@ default: site
 venv:
 	python3 -m venv $(VENV)
 	echo ". $(VENV)/bin/activate" >./venv
-	. ./venv && pip install commonmark coverage
 
 .PHONY: site
 site: venv
@@ -16,16 +15,6 @@ site: venv
 .PHONY: serve
 serve: site
 	. ./venv && (cd _site && python -m http.server -b 127.0.0.1)
-
-.PHONY: test
-test: venv
-	. ./venv && python -m unittest -bv
-
-.PHONY: coverage
-coverage: venv
-	. ./venv && coverage run --branch --source=. -m unittest discover -bv; :
-	. ./venv && coverage report -m
-	. ./venv && coverage html
 
 .PHONY: vendor
 vendor:
