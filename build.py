@@ -18,12 +18,27 @@ from datetime import datetime
 
 import makesite as mk
 
-def build():
+def build(params, lang = ''):
+	# build dir
+	src = 'content'
+	dst = '_site'
+	if lang != '':
+		src = 'content/%s' % lang
+		dst = '_site/%s' % lang
+	# load layouts
+	page_layout = mk.fread('layout/page.html')
+	# site pages
+	mk.make_pages('%s/_index.md' % src, '%s/index.html' % dst,
+		page_layout, **params)
+	mk.make_pages('%s/[!_]*.md' % src, '%s/{{ slug }}/index.html' % dst,
+		page_layout, **params)
+
+def main():
 	# build dir
 	if path.isdir('_site'):
 		shutil.rmtree('_site')
+	# copy static files
 	shutil.copytree('static', path.join('_site', 'static'))
-
 	# configure build env
 	ENV = os.getenv('TCCK_ENV', 'devel')
 	mk.log("Build env: {}", ENV)
@@ -36,19 +51,9 @@ def build():
 	}
 	envfn = path.join('config', '%s.json' % ENV)
 	params.update(json.loads(mk.fread(envfn)))
-
-	# load layouts
-	page_layout = mk.fread('layout/page.html')
-
-	# site pages
-	mk.make_pages('content/_index.md', '_site/index.html',
-		page_layout, **params)
-	mk.make_pages('content/[!_]*.md', '_site/{{ slug }}/index.html',
-		page_layout, **params)
-
-def main():
+	# build site
 	try:
-		build()
+		build(params.copy())
 	except Exception as err:
 		mk.log("{}", err)
 		return 2
