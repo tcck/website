@@ -18,7 +18,7 @@ from datetime import datetime
 
 import makesite as mk
 
-def main():
+def build():
 	# build dir
 	if path.isdir('_site'):
 		shutil.rmtree('_site')
@@ -34,12 +34,8 @@ def main():
 		'site_url': 'http://localhost:8000',
 		'current_year': datetime.now().year,
 	}
-	try:
-		envfn = path.join('config', '%s.json' % ENV)
-		params.update(json.loads(mk.fread(envfn)))
-	except Exception as err:
-		mk.log("{}", err)
-		return 2
+	envfn = path.join('config', '%s.json' % ENV)
+	params.update(json.loads(mk.fread(envfn)))
 
 	# load layouts
 	page_layout = mk.fread('layout/page.html')
@@ -50,6 +46,12 @@ def main():
 	mk.make_pages('content/[!_]*.md', '_site/{{ slug }}/index.html',
 		page_layout, **params)
 
+def main():
+	try:
+		build()
+	except Exception as err:
+		mk.log("{}", err)
+		return 2
 	return 0
 
 if __name__ == '__main__':
