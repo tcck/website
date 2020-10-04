@@ -25,6 +25,7 @@ def build(params, lang = ''):
 	if lang != '':
 		src = 'content/%s' % lang
 		dst = '_site/%s' % lang
+		params['base_path'] = '/%s' % lang
 	# load layouts
 	page_layout = mk.fread('layout/page.html')
 	# site pages
