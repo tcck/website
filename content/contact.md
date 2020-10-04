@@ -1,4 +1,4 @@
-<!-- title: Contacto -->
+<!-- subtitle: Contacto -->
 # Contacto
 
 [Instagram](https://instagram.com/tcck.uy/)

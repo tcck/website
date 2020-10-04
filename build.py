@@ -56,6 +56,7 @@ def main():
 	mk.log("Build env: {}", ENV)
 	params = {
 		'base_path': '',
+		'title': 'TCCK',
 		'subtitle': '',
 		'author': 'Editor',
 		'site_url': 'http://localhost:8000',

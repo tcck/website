@@ -1,4 +1,4 @@
-<!-- title: Info -->
+<!-- subtitle: Info -->
 # Info
 
 TCCK, espacio dedicado a la práctica del arte en movimiento.

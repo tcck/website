@@ -1,4 +1,4 @@
-<!-- title: About -->
+<!-- subtitle: About -->
 # About
 
 TCCK, space dedicated to the practice of art in motion.
