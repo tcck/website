@@ -1,23 +1,17 @@
-VENV := ~/.venv/makesite
+TCCK_VENV ?= ~/.venv/tcck
+VENV := $(TCCK_VENV)
 
 .PHONY: default
 default: site
 
-.PHONY: venv
 venv:
 	python3 -m venv $(VENV)
-	echo ". $(VENV)/bin/activate" >./venv.sh
-	. ./venv.sh && pip install commonmark coverage
-
-venv.sh:
-	$(MAKE) venv
-
-.venv: venv.sh
-	@touch .venv
+	echo ". $(VENV)/bin/activate" >./venv
+	. ./venv && pip install commonmark coverage
 
 .PHONY: site
-site: .venv
-	. ./venv.sh && ./build.py
+site: venv
+	. ./venv && ./build.py
 
 .PHONY: serve
 serve: site
@@ -35,20 +29,23 @@ serve: site
 	fi
 
 .PHONY: test
-test: .venv
-	. ./venv.sh && python -m unittest -bv
+test: venv
+	. ./venv && python -m unittest -bv
 
 .PHONY: coverage
-coverage: .venv
-	. ./venv.sh && coverage run --branch --source=. -m unittest discover -bv; :
-	. ./venv.sh && coverage report -m
-	. ./venv.sh && coverage html
+coverage: venv
+	. ./venv && coverage run --branch --source=. -m unittest discover -bv; :
+	. ./venv && coverage report -m
+	. ./venv && coverage html
 
 .PHONY: vendor
 vendor:
 	@./vendor.sh
 
+.PHONY: clean
 clean:
-	@find . -type d -name '__pycache__' -exec rm -vrf {} \;
-	@find . -type f -name '*.pyc' -exec rm -vf {} \;
 	@rm -vrf .coverage htmlcov _vendor
+
+.PHONY: distclean
+distclean:
+	@rm -vrf ./vendor/makesite/__pycache__ venv

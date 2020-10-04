@@ -1,5 +1,4 @@
-/.venv
-/venv.sh
+/venv
 /_site
 /_vendor
 __pycache__
