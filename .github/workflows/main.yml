@@ -28,5 +28,5 @@ jobs:
       - name: Run sync
         run: |
           make publish-repo
-          make sync
+          make sync SITE=/tmp/tcck-publish-repo
           make publish
