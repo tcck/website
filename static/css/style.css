@@ -67,11 +67,13 @@ footer {
     padding: 1em 0;
     box-shadow: 0 100vh 0 100vh #f0f0f0;
     text-align: center;
+    font-family: monospace;
 }
 
 footer section p {
     font-size: 0.8em;
 }
+/*
 
 footer a {
     margin-right: 1em;
@@ -80,6 +82,7 @@ footer a {
 footer a:last-child {
     margin-right: 0;
 }
+*/
 
 
 /* Posts */
