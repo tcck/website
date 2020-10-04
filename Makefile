@@ -7,6 +7,7 @@ default: site
 venv:
 	python3 -m venv $(VENV)
 	echo ". $(VENV)/bin/activate" >./venv
+	. ./venv && pip install -r requirements.txt
 
 .PHONY: site
 site: venv

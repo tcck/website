@@ -45,9 +45,9 @@ def main():
 	page_layout = mk.fread('layout/page.html')
 
 	# site pages
-	mk.make_pages('content/_index.html', '_site/index.html',
+	mk.make_pages('content/_index.md', '_site/index.html',
 		page_layout, **params)
-	mk.make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
+	mk.make_pages('content/[!_]*.md', '_site/{{ slug }}/index.html',
 		page_layout, **params)
 
 	return 0
