@@ -5,7 +5,7 @@ COMMIT_MSG="$(git log -1 --format='%s')"
 COMMIT_INFO="$(git log -1 --format="commit %h%nAuthor: %an <%ae>%nDate:  %ad")"
 cd ${REPO}
 git add ./docs
-if git commit -am "${COMMIT_MESSAGE}" -m "${COMMIT_DETAILS}" --quiet
+if git commit -am "${COMMIT_MSG}" -m "${COMMIT_INFO}" --quiet
 then
 	git show --name-status
 	git push origin master
