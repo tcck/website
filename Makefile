@@ -44,7 +44,11 @@ coverage: .venv
 	. ./venv.sh && coverage report -m
 	. ./venv.sh && coverage html
 
+.PHONY: vendor
+vendor:
+	./vendor.sh
+
 clean:
 	find . -type d -name '__pycache__' -exec rm -rf {} \;
 	find . -type f -name '*.pyc' -exec rm -f {} \;
-	rm -rf .coverage htmlcov
+	rm -rf .coverage htmlcov _vendor
