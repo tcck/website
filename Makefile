@@ -36,3 +36,18 @@ sync: site
 	@echo "-- SITE: $(SITE)/docs/"
 	@test -e ./_site/.nojekyll || touch ./_site/.nojekyll
 	@rsync -vax --delete-before ./_site/ $(SITE)/docs/
+
+INPUT_GITHUB_TOKEN ?= 'NOGHTOKEN'
+
+.PHONY: publish-repo
+publish-repo:
+	@rm -vrf /tmp/tcck-publish-repo
+	git clone --sinble-branch --branch master --depth 1 \
+		https://x-access-token:$(INPUT_GITHUB_TOKEN)@github.com/tcck.github.io.git /tmp/tcck-publish-repo
+	cd /tmp/tcck-publish-repo \
+		&& git config user.name "publish-bot" \
+		&& git config user.email "jrmsgit@users.noreply.github.com"
+
+.PHONY: publish
+publish:
+	./publi.sh /tmp/tcck-publish-repo
