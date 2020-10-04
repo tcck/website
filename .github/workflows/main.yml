@@ -28,6 +28,7 @@ jobs:
       - name: build
         shell: bash
         env:
+          GITHUB_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           SITE: /tmp/tcck-publish-repo
         run: |
           make publish-repo
