@@ -40,6 +40,9 @@ def build(params, lang = ''):
 	page_layout = mk.render(page_layout,
 		menu_content = menu_content, copyright_text = copyright_text)
 	# site pages
+	if lang == '':
+		mk.make_pages('%s/_404.md' % src, '%s/404.html' % dst,
+			page_layout, **params)
 	mk.make_pages('%s/_index.md' % src, '%s/index.html' % dst,
 		page_layout, **params)
 	mk.make_pages('%s/[!_]*.md' % src, '%s/{{ slug }}/index.html' % dst,

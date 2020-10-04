@@ -1,3 +1,5 @@
+SITE ?= ../tcck.github.io
+
 TCCK_VENV ?= ~/.venv/tcck
 VENV := $(TCCK_VENV)
 
@@ -23,8 +25,14 @@ vendor:
 
 .PHONY: clean
 clean:
-	@rm -vrf .coverage htmlcov _vendor
+	@rm -vrf _vendor _site
 
 .PHONY: distclean
 distclean:
 	@rm -vrf ./vendor/makesite/__pycache__ venv
+
+.PHONY: sync
+sync: site
+	@echo "-- SITE: $(SITE)/docs/"
+	@test -e ./_site/.nojekyll || touch ./_site/.nojekyll
+	@rsync -vax --delete-before ./_site/ $(SITE)/docs/
