@@ -19,12 +19,14 @@ from datetime import datetime
 import makesite as mk
 
 def main():
-	ENV = os.getenv('TCCK_ENV', 'devel')
-	mk.log("Build env: {}", ENV)
+	# build dir
 	if path.isdir('_site'):
 		shutil.rmtree('_site')
 	shutil.copytree('static', path.join('_site', 'static'))
 
+	# configure build env
+	ENV = os.getenv('TCCK_ENV', 'devel')
+	mk.log("Build env: {}", ENV)
 	params = {
 		'base_path': '',
 		'subtitle': '',
@@ -38,6 +40,15 @@ def main():
 	except Exception as err:
 		mk.log("{}", err)
 		return 2
+
+	# load layouts
+	page_layout = mk.fread('layout/page.html')
+
+	# site pages
+	mk.make_pages('content/_index.html', '_site/index.html',
+		page_layout, **params)
+	mk.make_pages('content/[!_]*.html', '_site/{{ slug }}/index.html',
+		page_layout, **params)
 
 	return 0
 
