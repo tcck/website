@@ -49,6 +49,6 @@ vendor:
 	./vendor.sh
 
 clean:
-	find . -type d -name '__pycache__' -exec rm -rf {} \;
-	find . -type f -name '*.pyc' -exec rm -f {} \;
-	rm -rf .coverage htmlcov _vendor
+	@find . -type d -name '__pycache__' -exec rm -vrf {} \;
+	@find . -type f -name '*.pyc' -exec rm -vf {} \;
+	@rm -vrf .coverage htmlcov _vendor
