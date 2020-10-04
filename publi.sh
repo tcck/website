@@ -9,12 +9,12 @@ git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
 git add ./docs
 if git commit -am "${COMMIT_MSG}" -m "${COMMIT_INFO}" --quiet
 then
-	#~ echo "machine github.com" >~/.netrc
-	#~ echo "login ${GITHUB_ACTOR}" >>~/.netrc
-	#~ echo "password ${GITHUB_TOKEN}" >>~/.netrc
-	#~ echo "machine api.github.com" >>~/.netrc
-	#~ echo "login ${GITHUB_ACTOR}" >>~/.netrc
-	#~ echo "password ${GITHUB_TOKEN}" >>~/.netrc
+	echo "machine github.com" >~/.netrc
+	echo "login ${GITHUB_ACTOR}" >>~/.netrc
+	echo "password ${PUBLISH_TOKEN}" >>~/.netrc
+	echo "machine api.github.com" >>~/.netrc
+	echo "login ${GITHUB_ACTOR}" >>~/.netrc
+	echo "password ${PUBLISH_TOKEN}" >>~/.netrc
 	git show --name-status
 	git push origin master
 fi
