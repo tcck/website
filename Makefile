@@ -40,8 +40,8 @@ sync: site
 GITHUB_ACTOR ?= 'NOGHACTOR'
 PUBLISH_TOKEN ?= 'NOPUBLISHTOKEN'
 
-.PHONY: publish-repo
-publish-repo:
+.PHONY: clone-publish-repo
+clone-publish-repo:
 	@rm -vrf $(SITE)
 	git clone --single-branch --branch master --depth 1 \
 		https://$(GITHUB_ACTOR):$(PUBLISH_TOKEN)@github.com/tcck/tcck.github.io.git $(SITE)

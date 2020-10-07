@@ -31,6 +31,6 @@ jobs:
           PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           SITE: /tmp/tcck-publish-repo
         run: |
-          make publish-repo
+          make clone-publish-repo
           make sync
           make publish
