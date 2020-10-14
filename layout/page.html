@@ -17,7 +17,10 @@
 <span class="home">
 	<a href="{{ base_path }}/"><img class="navbar_logo" src="/static/logo.png" alt="Home">&nbsp;{{ subtitle }}</a>
 </span>
-{{ menu_content }}
+<span class="links">
+	{{ menu_content }}
+	<a href="{{ lang_url }}{{ page }}" title="{{ lang_info }}">[{{ lang_change }}]</a>
+</span>
 </section>
 </nav>
 

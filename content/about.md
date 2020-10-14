@@ -1,3 +1,4 @@
+<!-- page: /about/ -->
 <!-- title: Info -->
 # Info
 

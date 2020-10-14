@@ -1,3 +1,4 @@
+<!-- page: /contact/ -->
 <!-- title: Contacto -->
 # Contacto
 
