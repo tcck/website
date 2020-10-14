@@ -32,4 +32,10 @@ clone-publish-repo:
 
 .PHONY: publish
 publish:
+	$(MAKE) clone-publish-repo
+	$(MAKE) sync
 	./publi.sh $(SITE)
+
+.PHONY: deps
+deps:
+	go get -u github.com/jrmsdev/gomks/cmd/mks

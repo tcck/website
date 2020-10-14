@@ -6,7 +6,7 @@ name: CI
 # events but only for the master branch
 on:
   push:
-    branches: [ master ]
+    branches: [ next ]
 
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -20,17 +20,18 @@ jobs:
       # Checks-out your repository under $GITHUB_WORKSPACE, so your job can access it
       - uses: actions/checkout@v2
 
-      - name: python setup
-        uses: actions/setup-python@v2
+      - name: golang
+        uses: actions/setup-go@v2
         with:
-          python-version: '3.x'
+          go-version: '1.x'
 
-      - name: build
+      - name: gomks
+        shell: bash
+        run: make deps
+
+      - name: publish
         shell: bash
         env:
           PUBLISH_TOKEN: ${{ secrets.PUBLISH_TOKEN }}
           SITE: /tmp/tcck-publish-repo
-        run: |
-          make clone-publish-repo
-          make sync
-          make publish
+        run: make publish
