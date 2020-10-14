@@ -1,0 +1,70 @@
+#!/usr/bin/env mks
+
+// env settings
+setenv_default("SITE_ENV", "devel")
+env = getenv("SITE_ENV")
+log("Build env %q", env)
+
+// default params
+params = params_new()
+params["base_path"] = ""
+params["subtitle"] = "Respira"
+params["author"] = "Editor"
+params["site_url"] = "http://localhost:8000"
+params["current_year"] = "2020" // FIXME!!
+
+// load env params
+params.Load("config/"+env+".json")
+
+// start from scratch
+rmtree("_site")
+
+// sync static files
+copytree("static", "_site/static")
+
+//~ // Load layouts.
+//~ page_layout = fread("makesite/layout/page.html")
+//~ post_layout = fread("makesite/layout/post.html")
+//~ list_layout = fread("makesite/layout/list.html")
+//~ item_layout = fread("makesite/layout/item.html")
+//~ feed_xml = fread("makesite/layout/feed.xml")
+//~ item_xml = fread("makesite/layout/item.xml")
+
+//~ // Combine layouts to form final layouts.
+//~ args = params.Copy()
+//~ args["content"] = post_layout
+//~ post_layout = render(page_layout, args)
+//~ args["content"] = list_layout
+//~ list_layout = render(page_layout, args)
+
+//~ // Create site pages.
+//~ make_pages("makesite/content/_index.html", "_site/index.html",
+	//~ page_layout, params)
+//~ make_pages("makesite/content/[^_]*.html", "_site/{{ slug }}/index.html",
+	//~ page_layout, params)
+
+//~ args = params.Copy()
+
+//~ // Create blogs.
+//~ args["blog"] = "blog"
+//~ blog_posts = make_pages("makesite/content/blog/*.md",
+	//~ "_site/blog/{{ slug }}/index.html", post_layout, args)
+//~ args["blog"] = "news"
+//~ news_posts = make_pages("makesite/content/news/*.html",
+	//~ "_site/news/{{ slug }}/index.html", post_layout, args)
+
+//~ // Create blog list pages.
+//~ args["blog"] = "blog"
+//~ args["title"] = "Blog"
+//~ make_list(blog_posts, "_site/blog/index.html", list_layout, item_layout, args)
+//~ args["blog"] = "news"
+//~ args["title"] = "News"
+//~ make_list(news_posts, "_site/news/index.html", list_layout, item_layout, args)
+
+//~ // Create RSS feeds.
+//~ args["blog"] = "blog"
+//~ args["title"] = "Blog"
+//~ make_list(blog_posts, "_site/blog/rss.xml", feed_xml, item_xml, args)
+//~ args["blog"] = "news"
+//~ args["title"] = "News"
+//~ make_list(news_posts, "_site/news/rss.xml", feed_xml, item_xml, args)
