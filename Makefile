@@ -5,11 +5,11 @@ default: site
 
 .PHONY: site
 site:
-	./build.mks
+	@./build.mks
 
 .PHONY: serve
 serve: site
-	@mks -serve ./_site
+	mks -serve ./_site
 
 .PHONY: clean
 clean:
@@ -19,7 +19,7 @@ clean:
 sync: site
 	@echo "-- SITE: $(SITE)/docs/"
 	@touch ./_site/.nojekyll
-	@rsync -vax --delete-before ./_site/ $(SITE)/docs/
+	rsync -vax --delete-before ./_site/ $(SITE)/docs/
 
 GITHUB_ACTOR ?= 'NOGHACTOR'
 PUBLISH_TOKEN ?= 'NOPUBLISHTOKEN'
