@@ -52,7 +52,7 @@ func build(params) {
 		make_pages(src+"/_404.md", dst+"/404.html", page_layout, params)
 	}
 	make_pages(src+"/_index.md", dst+"/index.html", page_layout, params)
-	make_pages(src+"/[!_]*.md", dst+"/{{ slug }}/index.html", page_layout, params)
+	make_pages(src+"/[^_]*.md", dst+"/{{ slug }}/index.html", page_layout, params)
 }
 
 for lang in ["es", "en"] {
