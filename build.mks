@@ -12,15 +12,18 @@ params["subtitle"] = "Respira"
 params["author"] = "Editor"
 params["site_url"] = "http://localhost:8000"
 params["current_year"] = datetime().Year()
+params["theme"] = "default"
 
 // load env params
 params.Load("config/"+env+".json")
+theme = "theme/" + params["theme"]
 
 // start from scratch
 rmtree("_site")
 
 // sync static files
 copytree("static", "_site/static")
+copytree(theme+"/static", "_site/static")
 
 // build i18n site
 func build(params) {
@@ -42,7 +45,7 @@ func build(params) {
 	// load layouts
 	menu_content = fread(src+"/_menu.html")
 	copyright_text = fread(src+"/copyright.txt")
-	page_layout = fread("layout/page.html")
+	page_layout = fread(theme+"/layout/page.html")
 	// combine layouts
 	params["menu_content"] = menu_content
 	params["copyright_text"] = copyright_text
