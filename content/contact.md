@@ -1,7 +1,5 @@
 <!-- page: /contact/ -->
 <!-- title: Contacto -->
-# Contacto
-
 [Instagram](https://instagram.com/tcck.uy/)
 
 [Facebook](https://fb.me/tcck.uy)

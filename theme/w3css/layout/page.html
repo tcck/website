@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>{{ title }} - {{ subtitle }}</title>
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="shortcut icon" href="/static/favicon.ico" type="image/x-icon">
+	<link rel="icon" href="/static/favicon.png" sizes="any" type="image/png" />
+	<link rel="stylesheet" type="text/css" href="/static/w3css/4/w3.css">
+	<link rel="stylesheet" type="text/css" href="/static/default.css">
+</head>
+
+<body class="w3-light-grey">
+
+<nav class="w3-row w3-black">
+<span class="w3-col s1 w3-mobile">
+	<a class="w3-button" href="{{ base_path }}/"><img src="/static/logo.png" alt="Home">{{ subtitle }}</a>
+</span>
+<span class="w3-rest s11 w3-right w3-mobile">
+	{{ menu_content }}
+	<a class="w3-button" href="{{ lang_url }}{{ page }}" title="{{ lang_info }}">[{{ lang_change }}]</a>
+</span>
+</nav>
+
+<header class="w3-center w3-xlarge w3-light-grey w3-border-bottom">
+	<span class="w3-tag w3-light-grey">{{ title }}</span>
+</header>
+
+<main class="w3-container w3-large w3-pale-yellow">
+	{{ content }}
+</main>
+
+<footer class="w3-container w3-center w3-small w3-light-grey w3-border-top">
+<p>
+	&copy; {{ current_year }}
+	{{ copyright_text }}
+	<a target="_blank" rel="license"
+	href="https://creativecommons.org/publicdomain/zero/1.0/">CC0 1.0</a>.
+	<br>
+	Built with <a target="_blank" href="https://github.com/jrmsdev/gomks">gomks</a>.
+</p>
+</footer>
+
+</body>
+</html>

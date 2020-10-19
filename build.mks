@@ -12,7 +12,7 @@ params["subtitle"] = "Respira"
 params["author"] = "Editor"
 params["site_url"] = "http://localhost:8000"
 params["current_year"] = datetime().Year()
-params["theme"] = "default"
+params["theme"] = "w3css"
 
 // load env params
 params.Load("config/"+env+".json")
